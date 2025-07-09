@@ -42,7 +42,7 @@ public struct JWK: Codable {
     /// Key ID (kid) - optional identifier for the key (RFC 7517 §4.5)
     public let kid: String?
     /// Algorithm (alg) - optional intended algorithm for the key (RFC 7517 §4.4)
-    public let alg: String?
+    public let alg: JWA?
     /// Public Key Use (use) - e.g., "sig" (signature), "enc" (encryption) (RFC 7517 §4.2)
     public let use: Use?
     
@@ -62,9 +62,9 @@ public struct JWK: Codable {
     /// Initializes a JWK with the given parameters.
     public init(
         kty: KeyType,
-        kid: String? = nil,
-        alg: String? = nil,
+        alg: JWA? = nil,
         use: Use? = nil,
+        kid: String? = nil,
         crv: Curve? = nil,
         x: String? = nil,
         y: String? = nil,
@@ -92,10 +92,10 @@ public struct JWK: Codable {
     public func ec(crv: Curve,
                    x: String,
                    y: String,
-                   kid: String? = nil,
-                   alg: String? = nil,
-                   use: Use? = nil) -> JWK {
-        JWK(kty: .EC, kid: kid, alg: alg, use: use, crv: crv, x: x, y: y)
+                   alg: JWA? = nil,
+                   use: Use? = nil,
+                   kid: String? = nil,) -> JWK {
+        JWK(kty: .EC, alg: alg, use: use, kid: kid, crv: crv, x: x, y: y)
     }
     
     enum CodingKeys: String, CodingKey {

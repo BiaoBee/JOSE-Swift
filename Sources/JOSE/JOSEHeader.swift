@@ -40,7 +40,7 @@ public struct JOSEHeader: Codable {
     /// Compression Algorithm (zip)
     public let zip: String?
     /// Ephemeral Public Key (epk)
-    public let epk: [String: Any]?
+    public let epk: JWK?
     /// Agreement PartyUInfo (apu)
     public let apu: String?
     /// Agreement PartyVInfo (apv)
@@ -69,7 +69,7 @@ public struct JOSEHeader: Codable {
         crit: [String]? = nil,
         enc: String? = nil,
         zip: String? = nil,
-        epk: [String: Any]? = nil,
+        epk: JWK? = nil,
         apu: String? = nil,
         apv: String? = nil,
         iv: String? = nil,
@@ -102,53 +102,5 @@ public struct JOSEHeader: Codable {
     enum CodingKeys: String, CodingKey, CaseIterable {
         case alg, jku, jwk, kid, x5u, x5c, x5t, x5tS256 = "x5t#S256", typ, cty, crit,
              enc, zip, epk, apu, apv, iv, tag, p2s, p2c
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(alg, forKey: .alg)
-        try container.encodeIfPresent(jku, forKey: .jku)
-        try container.encodeIfPresent(jwk, forKey: .jwk)
-        try container.encodeIfPresent(kid, forKey: .kid)
-        try container.encodeIfPresent(x5u, forKey: .x5u)
-        try container.encodeIfPresent(x5c, forKey: .x5c)
-        try container.encodeIfPresent(x5t, forKey: .x5t)
-        try container.encodeIfPresent(x5tS256, forKey: .x5tS256)
-        try container.encodeIfPresent(typ, forKey: .typ)
-        try container.encodeIfPresent(cty, forKey: .cty)
-        try container.encodeIfPresent(crit, forKey: .crit)
-        try container.encodeIfPresent(enc, forKey: .enc)
-        try container.encodeIfPresent(zip, forKey: .zip)
-        try container.encodeIfPresent(epk, forKey: .epk)
-        try container.encodeIfPresent(apu, forKey: .apu)
-        try container.encodeIfPresent(apv, forKey: .apv)
-        try container.encodeIfPresent(iv, forKey: .iv)
-        try container.encodeIfPresent(tag, forKey: .tag)
-        try container.encodeIfPresent(p2s, forKey: .p2s)
-        try container.encodeIfPresent(p2c, forKey: .p2c)
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.alg = try container.decodeIfPresent(String.self, forKey: .alg)
-        self.jku = try container.decodeIfPresent(String.self, forKey: .jku)
-        self.jwk = try container.decodeIfPresent([String: AnyCodable].self, forKey: .jwk)
-        self.kid = try container.decodeIfPresent(String.self, forKey: .kid)
-        self.x5u = try container.decodeIfPresent(String.self, forKey: .x5u)
-        self.x5c = try container.decodeIfPresent([String].self, forKey: .x5c)
-        self.x5t = try container.decodeIfPresent(String.self, forKey: .x5t)
-        self.x5tS256 = try container.decodeIfPresent(String.self, forKey: .x5tS256)
-        self.typ = try container.decodeIfPresent(String.self, forKey: .typ)
-        self.cty = try container.decodeIfPresent(String.self, forKey: .cty)
-        self.crit = try container.decodeIfPresent([String].self, forKey: .crit)
-        self.enc = try container.decodeIfPresent(String.self, forKey: .enc)
-        self.zip = try container.decodeIfPresent(String.self, forKey: .zip)
-        self.epk = try container.decodeIfPresent([String: AnyCodable].self, forKey: .epk)
-        self.apu = try container.decodeIfPresent(String.self, forKey: .apu)
-        self.apv = try container.decodeIfPresent(String.self, forKey: .apv)
-        self.iv = try container.decodeIfPresent(String.self, forKey: .iv)
-        self.tag = try container.decodeIfPresent(String.self, forKey: .tag)
-        self.p2s = try container.decodeIfPresent(String.self, forKey: .p2s)
-        self.p2c = try container.decodeIfPresent(Int.self, forKey: .p2c)
     }
 }
