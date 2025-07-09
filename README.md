@@ -16,7 +16,3 @@ A Swift implementation of JOSE (Javascript Object Signing and Encryption) standa
 
 ## Installation
 
-Add the following to your `Package.swift` dependencies:
-
-```swift
-.package(url: "https://github.com/yourusername/JOSE.git", from: "0.1.0")
