@@ -7,7 +7,7 @@
 
 import Foundation
 import Testing
-@testable import JWT
+@testable import JOSE
 
 struct JWTClaimTests {
     @Test("Decoding public JWT claims") func decode() async throws {

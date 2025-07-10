@@ -10,7 +10,7 @@ import Foundation
 /// Represents a JSON Web Key (JWK) as defined in RFC 7517.
 /// https://datatracker.ietf.org/doc/html/rfc7517
 /// This struct supports EC and symmetric keys, and includes common parameters.
-public struct JWK: Codable {
+public struct JWK: Codable, Equatable {
     /// Public Key Use (use) - identifies the intended use of the public key (RFC 7517 §4.2)
     public enum Use: String, Codable {
         /// Signature
@@ -89,12 +89,12 @@ public struct JWK: Codable {
     ///   - alg: Algorithm
     ///   - use: Intended use
     /// - Returns: JWK instance for EC public key
-    public func ec(crv: Curve,
-                   x: String,
-                   y: String,
-                   alg: JWA? = nil,
-                   use: Use? = nil,
-                   kid: String? = nil,) -> JWK {
+    static public func ec(crv: Curve,
+                          x: String,
+                          y: String,
+                          alg: JWA? = nil,
+                          use: Use? = nil,
+                          kid: String? = nil,) -> JWK {
         JWK(kty: .EC, alg: alg, use: use, kid: kid, crv: crv, x: x, y: y)
     }
     

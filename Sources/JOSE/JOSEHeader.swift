@@ -9,10 +9,10 @@ import Foundation
 
 /// Represents a JOSE header for JWS (RFC 7515) and JWE (RFC 7516).
 /// Only parameters defined in these RFCs are included.
-public struct JOSEHeader: Codable {
+public struct JOSEHeader: Codable, Equatable {
     // MARK: -  Common parameters (RFC 7515 §4.1, RFC 7516 §4.1)
     /// Algorithm (alg)
-    public let alg: JWA?
+    public let alg: JWA
     /// JSON Web Key Set URL (jku)
     public let jku: String?
     /// JSON Web Key (jwk)
@@ -55,28 +55,27 @@ public struct JOSEHeader: Codable {
     public let p2c: Int?
     
     // TODO: - add custom parameters
-    public init(
-        alg: JWA? = nil,
-        jku: String? = nil,
-        jwk: JWK? = nil,
-        kid: String? = nil,
-        x5u: String? = nil,
-        x5c: [String]? = nil,
-        x5t: String? = nil,
-        x5tS256: String? = nil,
-        typ: String? = nil,
-        cty: String? = nil,
-        crit: [String]? = nil,
-        enc: String? = nil,
-        zip: String? = nil,
-        epk: JWK? = nil,
-        apu: String? = nil,
-        apv: String? = nil,
-        iv: String? = nil,
-        tag: String? = nil,
-        p2s: String? = nil,
-        p2c: Int? = nil
-    ) {
+    // TODO: - validate critical parameter s
+    public init(alg: JWA,
+                jku: String? = nil,
+                jwk: JWK? = nil,
+                kid: String? = nil,
+                x5u: String? = nil,
+                x5c: [String]? = nil,
+                x5t: String? = nil,
+                x5tS256: String? = nil,
+                typ: String? = nil,
+                cty: String? = nil,
+                crit: [String]? = nil,
+                enc: String? = nil,
+                zip: String? = nil,
+                epk: JWK? = nil,
+                apu: String? = nil,
+                apv: String? = nil,
+                iv: String? = nil,
+                tag: String? = nil,
+                p2s: String? = nil,
+                p2c: Int? = nil) {
         self.alg = alg
         self.jku = jku
         self.jwk = jwk
@@ -98,7 +97,7 @@ public struct JOSEHeader: Codable {
         self.p2s = p2s
         self.p2c = p2c
     }
-    
+        
     enum CodingKeys: String, CodingKey, CaseIterable {
         case alg, jku, jwk, kid, x5u, x5c, x5t, x5tS256 = "x5t#S256", typ, cty, crit,
              enc, zip, epk, apu, apv, iv, tag, p2s, p2c

@@ -21,6 +21,8 @@ public enum JWA: String, Codable {
     case ES256
     /// ECDSA using P-384 and SHA-384 (ES384)
     case ES384
+    /// ECDSA using P-521 curve and SHA-512(ES512)
+    case ES512
 
     // MARK: - JWE algorithms
     case DIR
