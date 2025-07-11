@@ -27,7 +27,7 @@ extension String {
             .replacingOccurrences(of: "-", with: "+")
             .replacingOccurrences(of: "_", with: "/")
 
-        // Add paddinds.
+        // Add mising paddings.
         let paddingLength = 4 - (base64.count % 4)
         if paddingLength < 4 {
             base64 += String(repeating: "=", count: paddingLength)

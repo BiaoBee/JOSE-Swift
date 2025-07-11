@@ -8,6 +8,7 @@
 import Foundation
 import Security
 
+// TODO: Error handling
 struct Crypto {
     static func sign(data: Data, key: SecKey, alg: JWA) throws -> Data {
         let algorithm: SecKeyAlgorithm = switch alg {
