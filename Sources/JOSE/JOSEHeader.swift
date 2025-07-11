@@ -12,27 +12,27 @@ import Foundation
 public struct JOSEHeader: Codable, Equatable {
     // MARK: -  Common parameters (RFC 7515 §4.1, RFC 7516 §4.1)
     /// Algorithm (alg)
-    public let alg: JWA
+    public var alg: JWA
     /// JSON Web Key Set URL (jku)
-    public let jku: String?
+    public var jku: String?
     /// JSON Web Key (jwk)
-    public let jwk: JWK?
+    public var jwk: JWK?
     /// Key ID (kid)
-    public let kid: String?
+    public var kid: String?
     /// X.509 URL (x5u)
-    public let x5u: String?
+    public var x5u: String?
     /// X.509 Certificate Chain (x5c)
-    public let x5c: [String]?
+    public var x5c: [String]?
     /// X.509 Certificate SHA-1 Thumbprint (x5t)
-    public let x5t: String?
+    public var x5t: String?
     /// X.509 Certificate SHA-256 Thumbprint (x5t#S256)
-    public let x5tS256: String?
+    public var x5tS256: String?
     /// Type (typ)
-    public let typ: String?
+    public var typ: String?
     /// Content Type (cty)
-    public let cty: String?
+    public var cty: String?
     /// Critical (crit)
-    public let crit: [String]?
+    public var crit: [String]?
     
     // MARK: - JWE-specific parameters (RFC 7516 §4.1)
     /// Encryption Algorithm (enc)
