@@ -2,7 +2,7 @@
 
 JOSE is a Swift package for creating, parsing, validating, encrypting, and decrypting JWTs on Apple platforms.
 
-The package is under active development. The public API may change before `1.0.0`, so avoid using it for production security-critical workloads until the API and compatibility guarantees are finalized.
+The package is now available as `1.0.0`. Review the API and security properties carefully before adopting it in production security-critical workloads.
 
 ## Public JWT API
 
@@ -31,7 +31,7 @@ The implementation uses `Foundation`, `Security`, and `CryptoKit`, with `AnyCoda
 Add the package to your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/<owner>/JOSE-Swift", from: "0.1.0")
+.package(url: "https://github.com/BiaoBee/JOSE-Swift", from: "1.0.0")
 ```
 
 Then add the `JOSE` product to your target:
