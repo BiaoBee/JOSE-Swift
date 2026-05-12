@@ -1,5 +1,32 @@
 # JOSE
 
+[![Swift 6.0+](https://img.shields.io/badge/Swift-6.0%2B-F05138.svg)](https://swift.org)
+[![Platforms](https://img.shields.io/badge/Platforms-iOS%2013%2B%20%7C%20macOS%2011%2B%20%7C%20tvOS%2013%2B%20%7C%20watchOS%206%2B-0A84FF.svg)](https://github.com/BiaoBee/JOSE-Swift)
+[![Release](https://img.shields.io/github/v/release/BiaoBee/JOSE-Swift)](https://github.com/BiaoBee/JOSE-Swift/releases)
+[![License](https://img.shields.io/github/license/BiaoBee/JOSE-Swift)](https://github.com/BiaoBee/JOSE-Swift/blob/main/LICENSE.md)
+
+Swift package for working with JOSE standards on Apple platforms, including signing, verification, encryption, decryption, and JWT claims handling.
+
+## Overview
+
+- JWT signing and verification for HMAC, RSA, and ECDSA algorithms
+- JWT encryption and decryption for direct, RSA, and ECDH-based JWE flows
+- Token-oriented API built around `JWT`, `JWT.Signed`, and `JWT.Encrypted`
+- Apple-platform implementation using `Foundation`, `Security`, and `CryptoKit`
+
+## Contents
+
+- [Public JWT API](#public-jwt-api)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Supported JWT Signing Algorithms](#supported-jwt-signing-algorithms)
+- [Supported JWT Encryption Algorithms](#supported-jwt-encryption-algorithms)
+- [JWT Claims](#jwt-claims)
+- [Signing JWTs With HMAC](#signing-jwts-with-hmac)
+- [Signing JWTs With Asymmetric Keys](#signing-jwts-with-asymmetric-keys)
+- [Parsing Existing Tokens](#parsing-existing-tokens)
+- [Encrypting JWTs](#encrypting-jwts)
+
 JOSE is a Swift package for creating, parsing, validating, encrypting, and decrypting JWTs on Apple platforms.
 
 The package is now available as `1.0.0`. Review the API and security properties carefully before adopting it in production security-critical workloads.
